@@ -2,26 +2,18 @@
 
 ## Overview
 A **real-time temperature dashboard** built with **Jetpack Compose**, **ViewModel**, **StateFlow**, and **Kotlin Coroutines**.  
-The app simulates live temperature sensor data, updating every 2 seconds, and visualizes readings through a dynamic list and summary statistics.
+Simulates sensor readings every 2 seconds, shows a scrolling list, summary stats, and an optional mini chart.
 
 ---
 
 ## Features
-- 🌡️ **Simulated Temperature Stream** – Generates random readings between **65°F–85°F** every **2 seconds**  
-- 📊 **Reactive Updates** – Uses **StateFlow** for real-time UI synchronization  
-- 🧮 **Summary Statistics** – Displays **current**, **average**, **minimum**, and **maximum** temperature values  
-- 📅 **Reading History** – Stores and shows the **last 20 readings** with timestamps  
-- ⏯️ **Pause/Resume** – Toggle simulation on and off using a simple control button  
-
----
-
-## How It Works
-- A coroutine running in the **ViewModel** simulates temperature readings and emits them via a `MutableStateFlow<List<TemperatureReading>>`.  
-- The **UI** collects this flow using `collectAsStateWithLifecycle()` and automatically recomposes with every update.  
-- The app keeps only the **20 most recent readings** in memory for display.  
-- Summary values (min, max, average) are calculated reactively whenever the list updates.  
-- The user can **pause or resume** data generation, controlling the coroutine execution.
-
+- 🌡️ **Simulated Stream**: random readings **65°F–85°F** every **2s**  
+- 🧠 **ViewModel + StateFlow**: unidirectional, reactive updates  
+- 🗃️ **History Buffer**: stores the **last 20 readings**  
+- 🧮 **Stats**: **current**, **average**, **min**, **max**  
+- 📋 **List**: timestamp + value in a `LazyColumn`  
+- 📈 **Chart**: simple sparkline using `Canvas` (or a lightweight third-party lib)  
+- ⏯️ **Pause/Resume** data generation with a toggle
 ---
 
 ## How to Run
